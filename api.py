@@ -13,4 +13,13 @@ def status(request_url):
     else:
         print(f'FAILED : {request_url.status_code}')
         return False
-    
+
+# look up a word and search for that word in the body of the webpage to see if it appears.
+def search_and_find_word_in_body(word):
+    url = f'https://api.dictionaryapi.dev/api/v2/entries/en/{word}'
+    req = http_request(url).text
+    if word in req:
+        return True
+    else:
+        return False
+
